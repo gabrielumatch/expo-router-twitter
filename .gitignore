@@ -3,6 +3,11 @@
 # dependencies
 node_modules/
 
+android/
+ios/
+/android
+/ios
+
 # Expo
 .expo/
 dist/
