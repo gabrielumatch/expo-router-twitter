@@ -5,7 +5,7 @@ export default function RootLayout() {
   useEffect(() => {
     // For now, hardcoding to timeline route
     // Later you'll replace this with your auth logic
-    router.replace('/(app)/timeline/timeline');
+    router.replace('/(app)/timeline');
   }, []);
 
   return <Slot />;
