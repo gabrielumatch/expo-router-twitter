@@ -1,61 +1,52 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Link, usePathname } from 'expo-router';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
-type TabIconName =
-  | 'home-outline'
-  | 'home'
-  | 'search-outline'
-  | 'search'
-  | 'notifications-outline'
-  | 'notifications'
-  | 'mail-outline'
-  | 'mail';
-
-export default function TabBar() {
-  const pathname = usePathname();
-
+export default function TabBar({ state, navigation }: BottomTabBarProps) {
   const tabs = [
     {
-      name: 'Home',
-      path: '/(app)/timeline/timeline-page' as const,
+      name: 'timeline',
       icon: 'home-outline' as const,
       activeIcon: 'home' as const,
     },
     {
-      name: 'Search',
-      path: '/(app)/search' as const,
+      name: 'search',
       icon: 'search-outline' as const,
       activeIcon: 'search' as const,
     },
     {
-      name: 'Notifications',
-      path: '/(app)/notifications' as const,
+      name: 'notifications',
       icon: 'notifications-outline' as const,
       activeIcon: 'notifications' as const,
     },
     {
-      name: 'Messages',
-      path: '/(app)/messages' as const,
+      name: 'chat',
       icon: 'mail-outline' as const,
       activeIcon: 'mail' as const,
+    },
+    {
+      name: 'profile',
+      icon: 'person-outline' as const,
+      activeIcon: 'person' as const,
     },
   ] as const;
 
   return (
     <View style={styles.container}>
-      {tabs.map(tab => {
-        const isActive = pathname === tab.path;
+      {tabs.map((tab, index) => {
+        const isActive = state.index === index;
         return (
-          <Link href={tab.path as any} key={tab.name} asChild>
-            <TouchableOpacity style={styles.tab}>
-              <Ionicons
-                name={isActive ? tab.activeIcon : tab.icon}
-                size={24}
-                color={isActive ? '#1DA1F2' : '#536471'}
-              />
-            </TouchableOpacity>
-          </Link>
+          <TouchableOpacity
+            key={tab.name}
+            style={styles.tab}
+            onPress={() => navigation.navigate(tab.name)}
+          >
+            <Ionicons
+              name={isActive ? tab.activeIcon : tab.icon}
+              size={24}
+              color={isActive ? '#1DA1F2' : '#536471'}
+            />
+          </TouchableOpacity>
         );
       })}
     </View>
