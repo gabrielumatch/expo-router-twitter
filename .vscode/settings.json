@@ -2,10 +2,19 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": true
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "typescript.suggest.autoImports": true,
-  "javascript.suggest.autoImports": true
+  "javascript.suggest.autoImports": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.expo": true,
+    "**/android": true,
+    "**/ios": true,
+    "**/bun.lock": true,
+    "**/node_modules": true,
+    "**/.vscode": false
+  }
 }

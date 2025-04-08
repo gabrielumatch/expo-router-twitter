@@ -1,10 +1,11 @@
+import React from 'react';
 import { Text, View } from 'react-native';
 
-export default function Notifications() {
+export default function Chat() {
   return (
     <>
       <View>
-        <Text>Notifications</Text>
+        <Text>Chat</Text>
       </View>
     </>
   );

@@ -1,10 +1,11 @@
+import React from 'react';
 import { Text, View } from 'react-native';
 
-export default function Chat() {
+export default function Search() {
   return (
     <>
       <View>
-        <Text>Chat</Text>
+        <Text>Search</Text>
       </View>
     </>
   );
