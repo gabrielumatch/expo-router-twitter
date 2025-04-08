@@ -5,6 +5,7 @@ import TweetList from '../../../components/TweetList';
 
 const mockUser = {
   avatar: 'https://avatars.githubusercontent.com/u/165733458?v=4',
+  coverImage: 'https://placehold.co/2000x600/1DA1F2/ffffff',
   name: 'John Doe',
   username: 'johndoe',
   bio: 'Software Developer at XYZ',
