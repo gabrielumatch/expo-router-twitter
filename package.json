@@ -16,8 +16,11 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.4",
+    "@legendapp/list": "^1.0.0-beta.30",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
+    "ajv": "^8.17.1",
+    "ajv-keywords": "^5.1.0",
     "expo": "~52.0.43",
     "expo-blur": "~14.0.3",
     "expo-constants": "~17.0.8",
