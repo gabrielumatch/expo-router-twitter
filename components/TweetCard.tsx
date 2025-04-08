@@ -34,11 +34,21 @@ const TweetCard: React.FC<TweetCardProps> = ({ tweet, disableNavigation = false 
     // Generate an ID if one doesn't exist
     const tweetId = tweet.id || `tweet-${Date.now()}`;
 
-    // Navigate to the tweet detail screen
-    router.push({
-      pathname: '/tweet/[id]',
-      params: { id: tweetId },
-    });
+    console.log('Attempting to navigate to tweet:', tweetId);
+
+    // Try direct string navigation first
+    try {
+      router.push(`/(app)/tweet/${tweetId}`);
+      console.log('Navigation successful');
+    } catch (error) {
+      console.error('Navigation failed:', error);
+
+      // Fallback to params object if direct path fails
+      router.push({
+        pathname: '/(app)/tweet/[id]',
+        params: { id: tweetId },
+      });
+    }
   };
 
   return (

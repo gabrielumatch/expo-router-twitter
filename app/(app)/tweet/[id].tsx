@@ -1,5 +1,4 @@
-import { FontAwesome } from '@expo/vector-icons';
-import { Stack, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import TweetCard from '../../../components/TweetCard';
@@ -122,12 +121,6 @@ export default function TweetDetailScreen() {
 
   return (
     <>
-      <Stack.Screen
-        options={{
-          title: 'Tweet',
-          headerLeft: () => <FontAwesome name="arrow-left" size={20} color="#1DA1F2" />,
-        }}
-      />
       <ScrollView style={styles.container}>
         <TweetCard tweet={tweet} disableNavigation />
 
