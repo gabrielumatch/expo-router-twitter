@@ -1,9 +1,11 @@
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { Image } from 'expo-image';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface Tweet {
+  id?: string;
   user: {
     avatar: string;
     name: string;
@@ -18,9 +20,34 @@ interface Tweet {
   };
 }
 
-const TweetCard: React.FC<{ tweet: Tweet }> = ({ tweet }) => {
+interface TweetCardProps {
+  tweet: Tweet;
+  disableNavigation?: boolean;
+}
+
+const TweetCard: React.FC<TweetCardProps> = ({ tweet, disableNavigation = false }) => {
+  const router = useRouter();
+
+  const handlePressTweet = () => {
+    if (disableNavigation) return;
+
+    // Generate an ID if one doesn't exist
+    const tweetId = tweet.id || `tweet-${Date.now()}`;
+
+    // Navigate to the tweet detail screen
+    router.push({
+      pathname: '/tweet/[id]',
+      params: { id: tweetId },
+    });
+  };
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={handlePressTweet}
+      activeOpacity={0.8}
+      disabled={disableNavigation}
+    >
       <Image source={{ uri: tweet.user.avatar }} style={styles.avatar} />
       <View style={styles.content}>
         <View style={styles.header}>
@@ -58,7 +85,7 @@ const TweetCard: React.FC<{ tweet: Tweet }> = ({ tweet }) => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
