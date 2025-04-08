@@ -44,6 +44,15 @@ export default function AppLayout() {
         }}
       />
       <Tabs.Screen
+        name="chat"
+        options={{
+          tabBarIcon: ({ color, size }: { color: string; size: number }) => (
+            <Ionicons name="mail-outline" size={size} color={color} />
+          ),
+          tabBarLabel: '',
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
           tabBarIcon: ({ color, size }: { color: string; size: number }) => (
